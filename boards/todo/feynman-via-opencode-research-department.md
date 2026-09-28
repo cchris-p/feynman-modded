@@ -4,7 +4,7 @@ title: "Feynman research department via opencode - platform-agnostic CLI + acces
 priority: "high"
 type: "feature"
 area: "RESEARCH"
-spec: "handoffs/feynman-via-opencode-research-loop-handoff.md"
+spec: "aa-studies/handoffs/feynman-via-opencode-research-loop-handoff.md"
 status: "todo"
 created: "2026-09-28"
 ---
@@ -82,10 +82,11 @@ output — and it must not be locked to a single platform.
 
 ## Related
 
-- Handoff: `handoffs/feynman-via-opencode-research-loop-handoff.md`
+- Handoff (aa-studies, where the loop application lives):
+  `aa-studies/handoffs/feynman-via-opencode-research-loop-handoff.md`
 - `opencode-modded-rust`: `RESEARCH-005`, `RESEARCH-003`,
   `invariants/research-department.md`
-- `aa-studies`: `INFRA-051`, `INFRA-052`, `BALKE-021`, `BALKE-022`,
+- `aa-studies`: `INFRA-051`, `INFRA-052`, `INFRA-053`, `BALKE-021`, `BALKE-022`,
   `docs/strategy-registry.md`, `docs/results-versioning-standard.md`
 
 ## Notes

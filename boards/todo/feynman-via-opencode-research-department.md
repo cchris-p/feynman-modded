@@ -107,6 +107,16 @@ output — and it must not be locked to a single platform.
   boundary preserved.
 - **Phase 2 DONE.** aa-studies `RSCH` expanded to the derivation-first two-gate
   sub-loop via `campaign-lifecycle-change` (model -> propagation -> enforcement).
-- **Phases 3–5 held** on `opencode-modded-rust RESEARCH-005` (and `RESEARCH-003`
-  for the external-consultation value); the `GATE-AUX-*` application is out of
-  scope on `matrillosub1`.
+- **Phase 0 extended (2026-09-28).** Remote/headless (no-TUI) execution verified:
+  non-TTY parent; one-shot `--prompt`, `--mode json`, and `--mode rpc` all exit 0
+  with empty stderr and write a session JSONL (`--mode rpc` via
+  `scripts/check-pi-rpc.mjs` -> `pi rpc ok: 77 commands`). See `AGENTS.md`
+  "Invoking Feynman from opencode".
+- **Phase 3 advanced (2026-09-28).** `opencode-modded-rust` `RESEARCH-005` A/B run
+  executed: Arm A (derivation-first) **stronger** than Arm B (incumbent) for a
+  scope-correct decision; both arms `park`. Results:
+  `opencode-modded-rust/docs/research/RESEARCH-005-ab-run-results.md`. Invariant
+  decision drafted (KEEP as amended) and **surfaced for operator approval**;
+  `RESEARCH-003` (external-evidence value) remains open.
+- **Phases 4–5 wait** on the operator's `RESEARCH-005` approval/unblock; the
+  `GATE-AUX-*` application is out of scope on `matrillosub1`.

@@ -152,3 +152,17 @@ FEYNMAN_TELEMETRY=off feynman --model <provider/model> --prompt \
 Verified 2026-09-28: `feynman --model deepseek/deepseek-flash --prompt ...`
 (Node 24.20.0) returned a cited answer ending `DISPOSITION: ambiguous`; session
 JSONL written under `~/.feynman/sessions/`.
+
+**Remote / headless verification (no TUI).** Re-verified 2026-09-28 with a
+non-TTY parent (stdout piped, `process.stdout.isTTY === false`); all three
+surfaces exited `0` with empty stderr and wrote a session JSONL:
+
+- One-shot text: `feynman --model deepseek/deepseek-flash --prompt "<q>; end with
+  exactly one line: DISPOSITION: ..."` -> answer + `DISPOSITION:` line on stdout.
+- `--mode json` -> newline-delimited JSON events (message / `agent_settled`).
+- `--mode rpc` -> `node scripts/check-pi-rpc.mjs` => `pi rpc ok: 77 commands,
+  empty stderr` (programmatic `get_commands` over stdin; stdin-close exits).
+
+Node floor on this host: the system `node` is v20; run the CLI with a supported
+Node (e.g. v24) on `PATH`, or set
+`FEYNMAN_NODE_EXECUTABLE=<node22.22+>` for the `~/.feynman/bin/feynman` shim.

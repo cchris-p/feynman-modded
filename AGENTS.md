@@ -107,3 +107,9 @@ Never use generic names like `research.md`, `draft.md`, `brief.md`, or `summary.
 - Prefer file-based handoffs over dumping large intermediate results back into parent context.
 - The lead agent is responsible for reconciling task completion. Subagents may not silently skip assigned tasks; skipped or merged tasks must be recorded in the plan artifact.
 - For critical claims, require at least one adversarial verification pass after synthesis. Fix fatal issues before delivery or surface them explicitly.
+
+## Tooling provenance
+
+- Do not imply Feynman CLI usage unless explicit `feynman "..."` commands were actually executed.
+- Work performed through OpenCode or other agent runtimes is valid agent assistance, but it is distinct from auditable Feynman CLI invocation.
+- When a workflow depends on tool provenance, record the exact commands used (for example in `notes/` or `CHANGELOG.md` for non-trivial runs), including both `feynman` and non-`feynman` commands.

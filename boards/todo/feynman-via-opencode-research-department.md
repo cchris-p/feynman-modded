@@ -93,3 +93,20 @@ output — and it must not be locked to a single platform.
 
 - Feynman is the reference harness, not a required one; model is not the variable.
 - Keep the human in the loop; findings are advisory.
+
+## Progress (2026-09-28)
+
+- **Phase 0 DONE.** Feynman runs from opencode as a platform-agnostic CLI.
+  Invocation + output-access spec added to `AGENTS.md` ("Tooling provenance" ->
+  "Invoking Feynman from opencode"); verified with a real consultative run
+  (`--model deepseek/deepseek-flash`) whose answer ended
+  `DISPOSITION: ambiguous` (session JSONL under `~/.feynman/sessions/`).
+- **Phase 1 DONE.** `opencode-modded-rust/invariants/research-department.md`
+  amended: `project-principles-redesign` (derive) and `research-department`
+  (consult) are two sequenced sub-steps of one loop; advisory/never-canonical
+  boundary preserved.
+- **Phase 2 DONE.** aa-studies `RSCH` expanded to the derivation-first two-gate
+  sub-loop via `campaign-lifecycle-change` (model -> propagation -> enforcement).
+- **Phases 3–5 held** on `opencode-modded-rust RESEARCH-005` (and `RESEARCH-003`
+  for the external-consultation value); the `GATE-AUX-*` application is out of
+  scope on `matrillosub1`.

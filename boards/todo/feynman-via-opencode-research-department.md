@@ -93,3 +93,30 @@ output — and it must not be locked to a single platform.
 
 - Feynman is the reference harness, not a required one; model is not the variable.
 - Keep the human in the loop; findings are advisory.
+
+## Progress (2026-09-28)
+
+- **Phase 0 DONE.** Feynman runs from opencode as a platform-agnostic CLI.
+  Invocation + output-access spec added to `AGENTS.md` ("Tooling provenance" ->
+  "Invoking Feynman from opencode"); verified with a real consultative run
+  (`--model deepseek/deepseek-flash`) whose answer ended
+  `DISPOSITION: ambiguous` (session JSONL under `~/.feynman/sessions/`).
+- **Phase 1 DONE.** `opencode-modded-rust/invariants/research-department.md`
+  amended: `project-principles-redesign` (derive) and `research-department`
+  (consult) are two sequenced sub-steps of one loop; advisory/never-canonical
+  boundary preserved.
+- **Phase 2 DONE.** aa-studies `RSCH` expanded to the derivation-first two-gate
+  sub-loop via `campaign-lifecycle-change` (model -> propagation -> enforcement).
+- **Phase 0 extended (2026-09-28).** Remote/headless (no-TUI) execution verified:
+  non-TTY parent; one-shot `--prompt`, `--mode json`, and `--mode rpc` all exit 0
+  with empty stderr and write a session JSONL (`--mode rpc` via
+  `scripts/check-pi-rpc.mjs` -> `pi rpc ok: 77 commands`). See `AGENTS.md`
+  "Invoking Feynman from opencode".
+- **Phase 3 advanced (2026-09-28).** `opencode-modded-rust` `RESEARCH-005` A/B run
+  executed: Arm A (derivation-first) **stronger** than Arm B (incumbent) for a
+  scope-correct decision; both arms `park`. Results:
+  `opencode-modded-rust/docs/research/RESEARCH-005-ab-run-results.md`. Invariant
+  decision drafted (KEEP as amended) and **surfaced for operator approval**;
+  `RESEARCH-003` (external-evidence value) remains open.
+- **Phases 4–5 wait** on the operator's `RESEARCH-005` approval/unblock; the
+  `GATE-AUX-*` application is out of scope on `matrillosub1`.

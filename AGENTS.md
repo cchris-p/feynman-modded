@@ -113,3 +113,56 @@ Never use generic names like `research.md`, `draft.md`, `brief.md`, or `summary.
 - Do not imply Feynman CLI usage unless explicit `feynman "..."` commands were actually executed.
 - Work performed through OpenCode or other agent runtimes is valid agent assistance, but it is distinct from auditable Feynman CLI invocation.
 - When a workflow depends on tool provenance, record the exact commands used (for example in `notes/` or `CHANGELOG.md` for non-trivial runs), including both `feynman` and non-`feynman` commands.
+
+### Invoking Feynman from opencode (research-department consultation)
+
+Feynman is the **platform-agnostic** external-consultation CLI for the aa-studies
+`RSCH` research loop (`aa-studies/handoffs/feynman-via-opencode-research-loop-handoff.md`
+Phase 0; feynman `FEYNMAN-001`). Both `ort` (opencode-modded-rust) and vanilla
+`opencode` shell out to the same binary in `PATH`; it is not a feature of either
+runtime, and its output is **advisory, never canonical**.
+
+**Runtime floor.** The CLI requires the repo's Node range (`package.json`
+`engines.node` `>=22.22.0`; `.nvmrc` `24.21.0`). If the default `node` is older,
+prepend a supported Node before invoking (this is the only environment setup
+Step):
+
+```bash
+export PATH="/path/to/node-22.22+/bin:$PATH"   # e.g. `nvm use 24`
+```
+
+**Invocation (exact, for provenance).** One-shot consultative query, no TUI:
+
+```bash
+FEYNMAN_TELEMETRY=off feynman --model <provider/model> --prompt \
+  "<premise question>; end with exactly one line: DISPOSITION: support|refute|ambiguous|nothing|error"
+```
+
+**Output access (read back by the caller).**
+
+- One-shot stdout: the answer (capture it and read the `DISPOSITION:` line).
+- Full transcript/session: `~/.feynman/sessions/<timestamp>_<uuid>.jsonl`.
+- Workflow artifacts (`deepresearch`, `lit`, ...): `outputs/<slug>.md` or
+  `papers/<slug>.md`, intermediate `outputs/.drafts/<slug>-*.md`, plan
+  `outputs/.plans/<slug>.md`, session logs in `notes/`, and the
+  `<slug>.provenance.md` sidecar next to the final output (see "File naming").
+  `outputs/`, `papers/`, and `notes/` are gitignored; copy any artifact that must
+  be durable.
+
+Verified 2026-09-28: `feynman --model deepseek/deepseek-flash --prompt ...`
+(Node 24.20.0) returned a cited answer ending `DISPOSITION: ambiguous`; session
+JSONL written under `~/.feynman/sessions/`.
+
+**Remote / headless verification (no TUI).** Re-verified 2026-09-28 with a
+non-TTY parent (stdout piped, `process.stdout.isTTY === false`); all three
+surfaces exited `0` with empty stderr and wrote a session JSONL:
+
+- One-shot text: `feynman --model deepseek/deepseek-flash --prompt "<q>; end with
+  exactly one line: DISPOSITION: ..."` -> answer + `DISPOSITION:` line on stdout.
+- `--mode json` -> newline-delimited JSON events (message / `agent_settled`).
+- `--mode rpc` -> `node scripts/check-pi-rpc.mjs` => `pi rpc ok: 77 commands,
+  empty stderr` (programmatic `get_commands` over stdin; stdin-close exits).
+
+Node floor on this host: the system `node` is v20; run the CLI with a supported
+Node (e.g. v24) on `PATH`, or set
+`FEYNMAN_NODE_EXECUTABLE=<node22.22+>` for the `~/.feynman/bin/feynman` shim.

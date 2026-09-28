@@ -4,6 +4,7 @@ node_modules
 .feynman/git
 .feynman/sessions
 .feynman/cache
+.feynman/npm
 .feynman/schedule-prompts.json
 dist
 *.tgz
@@ -16,6 +17,8 @@ notes/*
 experiments/*
 !experiments/.gitkeep
 .astro/
+.npmrc
+npm-test-output.txt
 
 # Local agent lab notebook (see AGENTS.md); not tracked.
 /CHANGELOG.md
